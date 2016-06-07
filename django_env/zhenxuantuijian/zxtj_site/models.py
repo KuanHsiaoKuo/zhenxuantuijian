@@ -98,7 +98,7 @@ class Article(models.Model):
     # 外键
     category = models.ForeignKey(
         Category, blank=True, null=True, verbose_name='分类')
-    # 多对多关系将会自动多生成一张表,blog_article_tag
+    # 多对多关系将会自动多生成一张表,zxtj_site_article_tag
     tag = models.ManyToManyField(Tag, verbose_name='标签')
     # 在文章模型中加入自定义的管理器
     objects = ArticleManager()
@@ -121,7 +121,7 @@ class CommentManager(models.Manager):
         from django.db import connection
         cursor = connection.cursor()
         cursor.execute("""
-            select article_id from blog_comment
+            select article_id from zxtj_site_comment
             group by article_id
             order by count(article_id)
             desc

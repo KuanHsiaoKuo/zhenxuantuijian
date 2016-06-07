@@ -14,7 +14,7 @@ from zxtj_site.forms import *
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.hashers import make_password
 # 使用setting.py中配置的日志器，一般都在views.py中使用日志器，因为这里都是业务逻辑
-logger = logging.getLogger('blog.views')
+logger = logging.getLogger('zxtj_site.views')
 
 # 用setting数据定义全局变量,返回一个字典
 

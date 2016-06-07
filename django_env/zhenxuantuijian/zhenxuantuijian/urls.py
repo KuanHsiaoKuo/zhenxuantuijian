@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
-from blog.upload import upload_image
+from zxtj_site.upload import upload_image
 urlpatterns = [
     # 映射到管理界面
     url(r'^admin/', include(admin.site.urls)),
@@ -29,6 +29,6 @@ urlpatterns = [
     # 用于映射富文本编辑器的图片上传
     url(r'^admin/upload/(?P<dir_name>[^/]+)$', upload_image,
         name='upload_image'),
-    # 重构urls.py，把blog相关url放到blog之下
-    url(r'^', include('blog.urls')),
+    # 重构urls.py，把zxtj_site相关url放到之下
+    url(r'^', include('zxtj_site.urls')),
 ]
