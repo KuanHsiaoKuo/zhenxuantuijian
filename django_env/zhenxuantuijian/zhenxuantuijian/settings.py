@@ -81,12 +81,12 @@ DATABASES = {
     'default': {
         # 配置别忘了用逗号，否则不被识别为元组
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'blogdb',
+        'NAME': 'zxtj_db',
         # 开发环境可用，生产环境不要用
         'USER': 'root',
         'PASSWORD': '123456',
         'HOST': '',
-        'PORT':  '',
+        'PORT': '',
     }
 }
 
@@ -225,7 +225,7 @@ LOGGING = {
             'level': 'INFO',
             'propagate': False
         },
-        'blog.views': {
+        'zxtj_site.views': {
             'handlers': ['default', 'error'],
             'level': 'DEBUG',
             'propagate': True
