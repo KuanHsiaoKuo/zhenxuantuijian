@@ -144,6 +144,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads'),
 
 
 # 网站的基本信息配置
+SITE_URL = 'http://localhost:8000/'
 SITE_NAME = '甄选推荐'
 SITE_DESC = '只推荐甄选过的好产品'
 WEIBO = '#'
