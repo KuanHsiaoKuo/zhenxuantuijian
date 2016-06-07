@@ -136,6 +136,14 @@ STATICFILES_DIRS = (
 AUTH_USER_MODEL = 'zxtj_site.User'
 
 
+# 网站的基本信息配置
+SITE_NAME = '甄选推荐'
+SITE_DESC = '只推荐甄选过的好产品'
+WEIBO = '#'
+WEIBO_TENCENT = '#'
+PRO_RSS = '#'
+PRO_EMAIL = 'johnson_hugh@163.com'
+
 # 自定义日志输出信息
 
 
