@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'zxtj_site',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -48,7 +49,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'zxtj_site'
+
 ]
 
 ROOT_URLCONF = 'zhenxuantuijian.urls'
@@ -77,8 +78,14 @@ WSGI_APPLICATION = 'zhenxuantuijian.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 配置别忘了用逗号，否则不被识别为元组
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'blogdb',
+        # 开发环境可用，生产环境不要用
+        'USER': 'root',
+        'PASSWORD': '123456',
+        'HOST': '',
+        'PORT':  '',
     }
 }
 
