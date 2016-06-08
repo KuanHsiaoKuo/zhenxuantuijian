@@ -1,0 +1,11 @@
+.pyc
+scrapy_env/
+zhenxuantuijian/blog/__pycache__/
+site_env/
+zhenxuantuijian/blog/static/
+zhenxuantuijian/blog/templatetags/__pycache__/
+zhenxuantuijian/blog/log/
+zhenxuantuijian/uploads
+zhenxuantuijian/zhenxuantuijian/__pycache__/
+zhenxuantuijian/log/
+zhenxuantuijian/blog/migrations/
