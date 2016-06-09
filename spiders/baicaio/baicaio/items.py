@@ -11,4 +11,8 @@ import scrapy
 class BaicaioItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    title = scrapy.Field()  # 文章标题
+    callback_link = scrapy.Field()  # 抓取网址
+    affiliate_link = scrapy.Field() #  返利链接
+    desc = scrapy.Field() # 文章描述
+    content = scrapy.Field() # 文章内容
