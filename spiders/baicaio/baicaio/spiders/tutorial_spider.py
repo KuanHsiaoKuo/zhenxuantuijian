@@ -1,5 +1,6 @@
+#-*- coding:utf-8 -*-
 import scrapy
-
+import pdb
 
 class Tutorial_Spider(scrapy.spiders.Spider):
     # 用于区别Spider。
@@ -17,5 +18,6 @@ class Tutorial_Spider(scrapy.spiders.Spider):
     # data)，提取数据(生成item)以及生成需要进一步处理的URL的 Request 对象。
     def parse(self,response):
         filename = response.url.split("/")[-2]
+        pdb.set_trace()
         with open(filename, 'wb') as f:
             f.write(response.body)
