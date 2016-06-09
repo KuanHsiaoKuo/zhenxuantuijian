@@ -1,6 +1,8 @@
 #-*- coding:utf-8 -*-
 import scrapy
 import pdb
+from baicaio.items import BaicaioItem
+
 
 class Tutorial_Spider(scrapy.spiders.Spider):
     # 用于区别Spider。
@@ -17,8 +19,13 @@ class Tutorial_Spider(scrapy.spiders.Spider):
     # 对象将会作为唯一的参数传递给该函数。 该方法负责解析返回的数据(response
     # data)，提取数据(生成item)以及生成需要进一步处理的URL的 Request 对象。
     def parse(self,response):
+        item = BaicaioItem()
         title = response.xpath(
             '//*[@id="content"]/ul/li/h1/a/@title'
             ).extract()
-        print title  # 打印的是列表，不显示中文
-        print title[0] #直接打印中文
+        item["title"] = title[0]
+        print item["title"]
+        yield item
+        # print title  # 打印的是列表，不显示中文
+        # print title[0] #直接打印中文
+
