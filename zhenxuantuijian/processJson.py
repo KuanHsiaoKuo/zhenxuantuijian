@@ -11,7 +11,17 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "zhenxuantuijian.settings")
 from blog.models import Article
 fin = open('baicaio_items.json', 'r')
 s = json.load(fin)
-print (type(s)) # 最外面是数组，对应python的list
+# print (type(s)) # 最外面是数组，对应python的list
+article_list = []
 for line in s:
-    print (type(line)) # 里面每条记录其实就是字典
-    print (line['title'])
+    # print (type(line)) # 里面每条记录其实就是字典
+    # print (line['title'])
+    # 这里是一次一次的生成对象，效率不够
+    # article = Article.objects.create(title = line['title'])
+    # 我们可以先生成对象，然后后面批量存入数据库
+    article = Article(title=line['title'])
+    article_list.append(article_list)
+fin.close()
+
+# 这是批量通过orm存入数据库
+Article.objects.bulk_create(article_list)
