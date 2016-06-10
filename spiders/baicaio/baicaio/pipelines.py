@@ -27,7 +27,9 @@ class MySQLStorePipeline(object):
         try:
             self.cursor.execute(
                 """
-                sql语句
+                insert into blog_article  select max(id) +1,
+                %s,%s,%s,%d,%d,%s,%d,%d
+                from blog_article
                 """,
                 (
                     item['title'][0].encode('utf-8'),
