@@ -4,11 +4,14 @@ import pdb
 from baicaio.items import BaicaioItem
 from scrapy.spiders import CrawlSpider,Rule
 from scrapy.linkextractors import LinkExtractor
+import random
+import re
 
 class Crawl_Spider(CrawlSpider):
     name = "from_list_spider"
     allowed_domains = ["baicaio.com"]
-    start_urls = ['http://www.baicaio.com/page/' + str(n) for n in range(1,4)]
+    # start_urls = ['http://www.baicaio.com/page/' + str(n) for n in range(1,4)]
+    start_urls = ['http://www.baicaio.com']
     rules = [
         # 用正则匹配跳转链接
         # Rule(LinkExtractor(allow=('http://www\.baicaio\.com/\?go/[0-9]{1,7}/', )),
@@ -22,9 +25,24 @@ class Crawl_Spider(CrawlSpider):
 
     def parse_item(self,response):
         item = BaicaioItem()
-        title = response.xpath(
+        item["title"] = response.xpath(
             '//*[@id="content"]/ul/li/h1/a/@title'
             ).extract()
-        item["title"] = title[0]
+        item["desc"] = \
+            response.xpath('//*[@id="content"]/ul/li/div[3]/p[1]').extract()
+        item["content"] = \
+            response.xpath('//*[@id="content"]/ul/li/div[3]/p').extract()
+        item["click_count"] = random.randint(0,20)
+        item["is_recommend"] = random.choice([0,1])
+        # 从url中取出发布日期
+        date = '-'.join(response.url.split('/')[3:6])
+        # 从网页中获取发布时间
+        time = \
+            response.xpath('//*[@id="content"]/ul/li/div[1]/div[2]').extract()[0]
+        time = re.findall("(?<=>).*(?=<)",time)[0]
+        publish_date = [date,time]
+        item["date_publish"] = ' '.join(publish_date)
+        item["user_id"] = random.randint(1,3)
+        item["category_id"] = random.randint(1,2)
         yield item
 
