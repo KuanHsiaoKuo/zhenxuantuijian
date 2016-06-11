@@ -66,7 +66,7 @@ ROBOTSTXT_OBEY = True
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
 #    'baicaio.pipelines.SomePipeline': 300,
-    'baicaio.pipelines.MySQLStorePipeline':400,
+#    'baicaio.pipelines.MySQLStorePipeline':400,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

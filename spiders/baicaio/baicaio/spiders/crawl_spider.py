@@ -16,7 +16,7 @@ class Crawl_Spider(CrawlSpider):
         # 用正则匹配跳转链接
         # Rule(LinkExtractor(allow=('http://www\.baicaio\.com/\?go/[0-9]{1,7}/', )),
         #     callback='parse_jump'),
-        Rule(LinkExtractor(allow=('http://www.baicaio.com/20[0-9]{2}/[0-9]{1,2}/[0-9]{1,2}/.*\.html',)),callback='parse_item'),
+        Rule(LinkExtractor(allow=('http://www.baicaio.com/2016/[0-9]{1,2}/[0-9]{1,2}/.*\.html',)),callback='parse_item'),
     ]
 
     def parse_jump(self,response):
