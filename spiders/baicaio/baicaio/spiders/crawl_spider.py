@@ -25,13 +25,18 @@ class Crawl_Spider(CrawlSpider):
 
     def parse_item(self,response):
         item = BaicaioItem()
-        item["title"] = response.xpath(
+        title = response.xpath(
             '//*[@id="content"]/ul/li/h1/a/@title'
             ).extract()
-        item["desc"] = \
+        item["title"] = title[0].encode('utf-8')
+        desc = \
             response.xpath('//*[@id="content"]/ul/li/div[3]/p[1]').extract()
-        item["content"] = \
+        desc[0] = desc[0].encode('utf-8')
+        if len(desc[0]) > 50 : desc[0] = desc[0][0:49] + '...'
+        item["desc"] = desc[0]
+        content = \
             response.xpath('//*[@id="content"]/ul/li/div[3]/p').extract()
+        item['content'] = content[0].encode('utf-8')
         item["click_count"] = random.randint(0,20)
         item["is_recommend"] = random.choice([0,1])
         # 从url中取出发布日期
@@ -44,5 +49,6 @@ class Crawl_Spider(CrawlSpider):
         item["date_publish"] = ' '.join(publish_date)
         item["user_id"] = random.randint(1,3)
         item["category_id"] = random.randint(1,2)
+        pdb.set_trace()
         yield item
 

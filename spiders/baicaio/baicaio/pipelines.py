@@ -5,7 +5,7 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 import MySQLdb
-
+import pdb
 
 # 定义基本的数据库信息
 dbuser = 'root'
@@ -25,6 +25,7 @@ class MySQLStorePipeline(object):
 
     def process_item(self, item, spider):
         try:
+            # pdb.set_trace()
             self.cursor.execute(
                 """
                 insert into blog_article  select max(id) +1,
@@ -32,7 +33,15 @@ class MySQLStorePipeline(object):
                 from blog_article
                 """,
                 (
-                    item['title'][0].encode('utf-8'),
+                    item['title'],
+                    item['desc'],
+                    item['content'],
+                    item['click_count'],
+                    item['is_recommend'],
+                    item['date_publish'],
+                    item['category_id'],
+                    item['user_id']
+
                 )
             )
             self.conn.commit()
