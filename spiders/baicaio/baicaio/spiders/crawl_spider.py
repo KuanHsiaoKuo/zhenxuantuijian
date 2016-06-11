@@ -49,6 +49,5 @@ class Crawl_Spider(CrawlSpider):
         item["date_publish"] = ' '.join(publish_date)
         item["user_id"] = random.randint(1,3)
         item["category_id"] = random.randint(1,2)
-        pdb.set_trace()
         yield item
 

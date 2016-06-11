@@ -29,7 +29,7 @@ class MySQLStorePipeline(object):
             self.cursor.execute(
                 """
                 insert into blog_article  select max(id) +1,
-                %s,%s,%s,%d,%d,%s,%d,%d
+                '%s','%s','%s',%s,%s,'%s',%s,%s
                 from blog_article
                 """,
                 (
